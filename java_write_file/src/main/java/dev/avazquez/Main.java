@@ -8,6 +8,9 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 
 public class Main {
+
+    // FEFF because this is the Unicode char represented by the UTF-8 byte order mark (EF BB BF).
+    public static final String UTF8_BOM = "\uFEFF";
     public static void main(String[] args) throws IOException {
 
         Path file_with_bom = Paths.get("/tmp/file_with_bom.txt");
@@ -23,7 +26,7 @@ public class Main {
         // Java 8 default UTF-8
         try (BufferedWriter bw = Files.newBufferedWriter(path, StandardCharsets.UTF_8)) {
             if (bom)
-                bw.write("\ufeff");
+                bw.write(UTF8_BOM);
             bw.write(content);
             bw.newLine();
             bw.write(content);
