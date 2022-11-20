@@ -1,0 +1,28 @@
+plugins {
+    id 'application'
+}
+
+group 'dev.avazquez'
+version '1.0-SNAPSHOT'
+
+apply plugin : "java"
+ext {
+    javaMainClass = "dev.avazquez.AwtTouchTest"
+}
+
+application {
+    mainClassName = javaMainClass
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.1'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.1'
+}
+
+test {
+    useJUnitPlatform()
+}
